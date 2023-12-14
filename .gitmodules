@@ -1,0 +1,12 @@
+[submodule "d4"]
+	path = d4
+	url = git@github.com:meelgroup/d4.git
+	branch = asp
+[submodule "ganak-asp"]
+	path = ganak-asp
+	url = git@github.com:mahi045/ganak-asp.git
+	branch = competition-clean
+[submodule "sharpsat-td"]
+	path = sharpsat-td
+	url = git@github.com:mahi045/sharpsat-td.git
+

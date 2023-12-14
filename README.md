@@ -30,11 +30,14 @@ cd sharpsat-td
 ```
 
 ## Input CNF Files
-The input CNF are available [here](https://zenodo.org/records/8265042). The CNFs are in completion + copy format. The CNFs can be used as SharpASP input file without any processing.
+The input CNFs are available [here](https://zenodo.org/records/8265042). The CNFs are in ``completion + copy`` format. The CNFs can be used as SharpASP input file without any processing.
 
 # Quick Run of sharpASP
+
 **We run our experiment in linux system**
+
 __Make sure that the complied binaries of D4, sharpSAT-TD, ganak, and flow_cutter_pace17 exist in the current directory__
+
 Run `sharpASP(GANAK)` using the following command (with input: `asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf`):
 The input file contains ``Completion & Copy`` of program
 ```

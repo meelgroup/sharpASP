@@ -54,3 +54,18 @@ Run `sharpASP(D4)` using the following command:
 
 ## Experimental Log files
 The experimental log files are available [here](https://zenodo.org/record/8265182).
+
+## How to cite
+Please cite our work if you use it:
+```
+@inproceedings{KCM2024,
+  title={Exact ASP counting with compact encodings},
+  author={Kabir, Mohimenul and Chakraborty, Supratik and Meel, Kuldeep S},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={9},
+  pages={10571--10580},
+  year={2024}
+}
+```
+

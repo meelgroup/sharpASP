@@ -7,7 +7,7 @@ sharpASP - Exact ASP Counting with Compact Encodings
 ## Clone 
 Clone the repository including all the submodules via
 ```
-git clone --recursive git@github.com/meelgroup/sharpASP.git
+git clone --recursive git@github.com:meelgroup/sharpASP.git
 ```
 
 ## Build
@@ -45,11 +45,11 @@ The input file contains ``Completion & Copy`` of program
 ```
 Run `sharpASP(sharpSAT-TD)` using the following command:
 ```
-./sharpSAT -decot 100 -decow 100 -tmpdir . -cs 4000 CNF/asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
+./sharpSAT -decot 100 -decow 100 -tmpdir . -cs 4000 asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
 ```
 Run `sharpASP(D4)` using the following command:
 ```
-./d4 -pv=NO -mc CNF/asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
+./d4 -pv=NO -mc asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
 ```
 
 ## Experimental Log files

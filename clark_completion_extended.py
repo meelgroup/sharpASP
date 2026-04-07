@@ -40,7 +40,7 @@ def writeUnitLiteralToCNF(output_file, key):
 if len(sys.argv) == 1:
     exit("There is no input file.")
 inputfile = sys.argv[1]
-outputFile = "non_minimal_" + inputfile[:len(inputfile)] + ".cnf"
+outputFile = "comp_copy_" + inputfile[:len(inputfile)] + ".cnf"
 
 inputFile = open(inputfile,'r+')                  # input file for logic program
 outputCNFFile = open(outputFile,'w')              # output file for cnf formula

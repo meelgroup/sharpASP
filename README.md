@@ -2,9 +2,9 @@
 This is the codebase of SharpASP. The related publicatin is [here](https://ojs.aaai.org/index.php/AAAI/article/view/28927).
 
 ## Requirement
-You need to install `gmp` and `mpfr`.
+You need to install `cmake`, `gmp` and `mpfr`.
 ```
-sudo apt-get install libgmp-dev libmpfr-dev
+sudo apt-get install build-essential cmake libgmp-dev libmpfr-dev libboost-all-dev
 ```
 
 ## Clone 
@@ -25,7 +25,7 @@ It should create a binary `d4`.
 
 To build Ganak:
 ```
-cd ganak-asp && cd script
+cd ganak-asp && cd scripts
 ./build_norm.sh
 ```
 It should create a binary `ganak`

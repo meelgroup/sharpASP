@@ -22,7 +22,7 @@ jobs:
 
       - name: Install gringo
         run: |
-          python3 -m pip install clingo
+          python3 -m pip install --user --upgrade clingo
           pip install networkx
 
       - name: Download normalization

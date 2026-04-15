@@ -1,0 +1,48 @@
+
+name: CI Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Install libraries
+        run: sudo apt-get update && sudo apt-get install -y build-essential cmake bison re2c python3-pip
+
+      - name: Install gringo
+        run: |
+          python3 -m pip install clingo
+          pip install networkx
+
+      - name: Download normalization
+        run: |
+          wget https://research.ics.aalto.fi/software/asp/lp2normal/binary-x86-64/lp2normal-2.27
+          chmod +x lp2normal-2.27
+
+      - name: Run build
+        run: |
+          chmod +x build.sh
+          ./build.sh
+          
+      - name: Sample SharpASP (std) Run
+        run: |
+          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c std
+
+      - name: Sample SharpASP (ganak) Run
+        run: |
+          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c ganak
+
+      - name: Sample SharpASP (d4) Run
+        run: |
+          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c d4

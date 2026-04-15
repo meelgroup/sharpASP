@@ -10,7 +10,7 @@ git clone --recursive git@github.com:meelgroup/sharpASP.git
 ## Requirement
 You need to install `cmake`, `gmp` and `mpfr`.
 ```
-sudo apt-get install build-essential cmake libgmp-dev libmpfr-dev libboost-all-dev
+sudo apt-get install build-essential cmake libgmp-dev libmpfr-dev libboost-all-dev python3-pip
 ```
 
 We use `gringo` as grounder. The best way to install gringo is to install via clingo:

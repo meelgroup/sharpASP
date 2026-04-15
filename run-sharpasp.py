@@ -7,11 +7,11 @@ parser.add_argument('-c','--c', help='counter name', default='std', required=Fal
 args = parser.parse_args()
 
 
-if shutil.which("clingo"):
+if shutil.which("gringo"):
     # print("Gringo Installed")
     pass
 else:
-    print("clingo is not installed. Please install clingo")
+    print("gringo is not installed. Please install gringo")
     exit(1)
 
 if not os.path.exists(args.i):
@@ -51,7 +51,7 @@ with tempfile.NamedTemporaryFile(dir=".", delete=False) as f:
     os.system("cp {0} {1}".format(args.i, temp_file))
     input_file = os.path.basename(temp_file)
 
-os.system("clingo --mode=gringo -o smodels {0} | ./lp2normal-2.27 > normalized-{0}".format(input_file))
+os.system("gringo -o smodels {0} | ./lp2normal-2.27 > normalized-{0}".format(input_file))
 os.system("python clark_completion_extended.py normalized-{0}".format(input_file, args.i))
 
 print(f'Invoking the SharpASP ({counter_name})... ')

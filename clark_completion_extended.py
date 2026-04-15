@@ -151,14 +151,14 @@ for each_scc in SCCs:
         for loop_atom in each_scc:
             atoms_on_loop.append(loop_atom)
 
-print("Number of loop atoms: " + str(len(atoms_on_loop)))
+# print("Number of loop atoms: " + str(len(atoms_on_loop)))
 # creating copy of each variables:
 copy_of_loop_atoms = list()
 
 
 definition = dict(sorted(definition.items(), key = sortByIntegerKey))
 
-print("The number of founded variables: {0}".format(len(founded_variable)))
+# print("The number of founded variables: {0}".format(len(founded_variable)))
 
 # for _ in definition:
 #     print(_, definition[_])
@@ -309,8 +309,8 @@ for _ in founded_variable:
     projection_var += str(_) + " "
     d4 = d4 + str(_) + ","
 projection_var += "0"
-print("Number of variables in propositional formula: " + str(next_var - 1))
-print("Number of clauses in propositional formula: " + str(numberOfClauses))
+# print("Number of variables in propositional formula: " + str(next_var - 1))
+# print("Number of clauses in propositional formula: " + str(numberOfClauses))
 
 firstLineOfCNFFile = "p cnf " + str(next_var - 1) + " " + str(numberOfClauses)
 

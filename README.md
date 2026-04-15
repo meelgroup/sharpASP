@@ -1,11 +1,5 @@
 # sharpASP
-This is the codebase of SharpASP. The related publicatin is [here](https://ojs.aaai.org/index.php/AAAI/article/view/28927).
-
-## Requirement
-You need to install `cmake`, `gmp` and `mpfr`.
-```
-sudo apt-get install build-essential cmake libgmp-dev libmpfr-dev libboost-all-dev
-```
+This is the codebase of SharpASP. The related publication is [here](https://ojs.aaai.org/index.php/AAAI/article/view/28927).
 
 ## Clone 
 Clone the repository including all the submodules via
@@ -13,29 +7,36 @@ Clone the repository including all the submodules via
 git clone --recursive git@github.com:meelgroup/sharpASP.git
 ```
 
-## Build
-You implement SharpASP within \#SAT solvers D4, Ganak, and SharpSAT-TD.
+## Requirement
+You need to install `cmake`, `gmp` and `mpfr`.
+```
+sudo apt-get install build-essential cmake libgmp-dev libmpfr-dev libboost-all-dev
+```
 
-To build D4
+We use `gringo` as grounder. The best way to install gringo is to install via clingo:
 ```
-cd d4
-make 
+pip install clingo
 ```
-It should create a binary `d4`.
 
-To build Ganak:
+After install you should be able to check `gringo`:
 ```
-cd ganak-asp && cd scripts
-./build_norm.sh
+$ gringo --version
+gringo version XXX
 ```
-It should create a binary `ganak`
 
-To build SharpSAT-TD:
+You need normalization tool `lp2normal` [1] of ASP programs. You can download a (linux) static binary of lp2normal from [1]. We used `lp2normal-2.27`. Please use the command to download `lp2normal-2.27` in the current directory:
 ```
-cd sharpsat-td
-./setupdev.sh
+wget https://research.ics.aalto.fi/software/asp/lp2normal/binary-x86-64/lp2normal-2.27
+chmod +x lp2normal-2.27
 ```
-It should create binaries `flow_cutter_pace17` and `sharpSAT`.
+
+## Build 
+First build our code as follows:
+```
+chmod +x build.sh
+./build.sh
+```
+The command should build D4, Ganak, and SharpSAT-TD versions for SharpASP.
 
 ## Benchmark
 The benchmark, experimental log files, binaries, and others are available here: [artifact](https://zenodo.org/records/19442660)
@@ -43,32 +44,35 @@ The benchmark, experimental log files, binaries, and others are available here: 
 
 # Run sharpASP
 
-Make sure that the complied binaries (from build) of D4, sharpSAT-TD, ganak, and flow_cutter_pace17 exist in the current directory.
-
-Run the ganak version of SharpASP using the following command (input: `asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf`):
+Make sure that the complied binaries (from build) of D4, sharpSAT-TD, ganak, flow_cutter_pace17, and lp2normal-2.27 exist in the current directory. Please check as follows:
 ```
-./ganak -noPCC -cs 4000 -noIBCP asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
-```
-Run sharpSAT-TD version of SharpASP using the following command (it will run the tree decomposition for 10 seconds):
-```
-./sharpSAT -decot 10 -decow 100 -tmpdir . -cs 4000 asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
-```
-Run D4 version of SharpASP using the following command:
-```
-./d4 -pv=NO -mc asp_normalized-hamiltonian_cycle.random-graph-20-4-16.zip.lp.cnf
+ls d4_bin sharpSAT ganak flow_cutter_pace17 lp2normal-2.27
 ```
 
-## Preprocessing 
-Before running SharpASP, you need to ground and normalize the input ASP program and compile it in CNF as Completion + Copy format. We used `gringo` [potassco](https://potassco.org/clingo/) and `lp2normal-2.27` [asptools](https://github.com/asptools/software) for grounding and normalization, respectively. 
+Run `graph_reach.random-graph-20-3-3.zip.lp` using SharpASP `SharpSAT-TD` as follows:
+```
+python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c std
+```
+it should print the count: `SharpASP Count: 99086`
 
-Let the normalized input file is `normalized-inputfile`, then run the command to get it in Completion + Copy format:
+
+Run `graph_reach.random-graph-20-3-3.zip.lp` using SharpASP `ganak` as follows:
 ```
-python clark_completion_extended.py normalized-inputfile
+python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c ganak
 ```
-the command will create a CNF file named `comp_copy_normalized-inputfile.cnf` (which is the target Completion + Copy format)
+it should print the count: `SharpASP Count: 99086`
+
+Run `graph_reach.random-graph-20-3-3.zip.lp` using SharpASP `d4` as follows:
+```
+python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c d4
+```
+it should print the count: `SharpASP Count: 99086`
 
 ## Experimental Log files
 The experimental log files of our evaluation are available [here](https://zenodo.org/record/8265182).
+
+## References
+- [https://research.ics.aalto.fi/software/asp/lp2normal/](https://research.ics.aalto.fi/software/asp/lp2normal/)
 
 ## How to cite
 Please cite our work if you use it:
@@ -83,4 +87,5 @@ Please cite our work if you use it:
   year={2024}
 }
 ```
+
 

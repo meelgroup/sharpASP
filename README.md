@@ -42,7 +42,7 @@ The command should build D4, Ganak, and SharpSAT-TD versions for SharpASP.
 The benchmark, experimental log files, binaries, and others are available here: [artifact](https://zenodo.org/records/19442660)
 
 
-# Run sharpASP
+## Run sharpASP
 
 Make sure that the complied binaries (from build) of D4, sharpSAT-TD, ganak, flow_cutter_pace17, and lp2normal-2.27 exist in the current directory. Please check as follows:
 ```

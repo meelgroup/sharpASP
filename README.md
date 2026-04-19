@@ -4,7 +4,7 @@ This is the codebase of SharpASP. The related publication is [here](https://ojs.
 ## Clone 
 Clone the repository including all the submodules via
 ```
-git clone --recursive git@github.com:meelgroup/sharpASP.git
+git clone --recursive https://github.com/meelgroup/sharpASP.git
 ```
 to update submodules:
 ```

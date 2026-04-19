@@ -42,22 +42,22 @@ The benchmark, experimental log files, binaries, and others are available here: 
 
 
 ## Run sharpASP
-Run `graph_reach.random-graph-20-3-3.zip.lp` using SharpASP `SharpSAT-TD` as follows:
+Run `graph_reach.random-graph-20-3-5.zip.lp` using SharpASP `SharpSAT-TD` as follows:
 ```
-python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c std
-```
-it should print the count: `SharpASP Count: 99086`
-
-
-Run `graph_reach.random-graph-20-3-3.zip.lp` using SharpASP `ganak` as follows:
-```
-python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c ganak
+python3 run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c std
 ```
 it should print the count: `SharpASP Count: 99086`
 
-Run `graph_reach.random-graph-20-3-3.zip.lp` using SharpASP `d4` as follows:
+
+Run `graph_reach.random-graph-20-3-5.zip.lp` using SharpASP `ganak` as follows:
 ```
-python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c d4
+python3 run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c ganak
+```
+it should print the count: `SharpASP Count: 99086`
+
+Run `graph_reach.random-graph-20-3-5.zip.lp` using SharpASP `d4` as follows:
+```
+python3 run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c d4
 ```
 it should print the count: `SharpASP Count: 99086`
 

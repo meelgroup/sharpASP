@@ -173,12 +173,6 @@ for _ in definition:
 #     print(_, definition[_])
 
 index = 0
-# while index < len(SCCs):
-#     each_scc = SCCs[index]
-#     for each_atom in each_scc:
-#         if each_atom in founded_variable:
-#             print(each_atom, index)
-#     index = index + 1
         
 
 
@@ -255,47 +249,6 @@ def add_one_round_copy_variables(next_variable):
     return copy_variable_mapping, next_variable
 
 copy_set1, next_var = add_one_round_copy_variables(lastVariable + new_variable)
-for_projected_model_counting = False ## it is false due to (projected) stable model counting
-if for_projected_model_counting:
-    copy_set2, next_var = add_one_round_copy_variables(next_var)
-
-    # now the relationship between copy_set1 and copy_set2
-    # now we are adding the clauses for \bigwedge \limits_{i=1}^{n} x_i \rightarrow y_i \wedge neg{\bigwedge \limits_{i=1}^{n} y_i \rightarrow x_i} 
-    # copy_set1 is x_i and copy_set2 is y_i
-    # finally the relation between p_1 and p_2
-    new_pis = list()
-    for _ in copy_set1:
-        # this part is corresponds to -x_i or y_i
-        clause = "-{0} {1} 0".format(copy_set1[_], copy_set2[_])
-        writeToFile(outputCNFFile, clause)
-        numberOfClauses = numberOfClauses + 1
-
-        p_i = next_var
-        new_pis.append(p_i)
-        next_var += 1
-
-        # this part is corresponds to -y_i or x_i or p_i
-        clause = "-{0} {1} {2} 0".format(copy_set2[_], copy_set1[_], p_i)
-        writeToFile(outputCNFFile, clause)
-        numberOfClauses = numberOfClauses + 1
-
-        # this part is corresponds to y_i or -p_i
-        clause = "{0} -{1} 0".format(copy_set2[_], p_i)
-        writeToFile(outputCNFFile, clause)
-        numberOfClauses = numberOfClauses + 1
-
-        # this part is corresponds to -x_i or -p_i
-        clause = "-{0} -{1} 0".format(copy_set1[_], p_i)
-        writeToFile(outputCNFFile, clause)
-        numberOfClauses = numberOfClauses + 1
-
-    clause = ""
-    for _ in new_pis:
-        clause += "{0} ".format(_)
-    clause += "0" 
-    writeToFile(outputCNFFile, clause)
-    numberOfClauses = numberOfClauses + 1
-
 
 outputCNFFile.close()
 # projection variables
@@ -346,6 +299,6 @@ with open(outputFile, 'r+') as cnffile:
             # cnffile.write(rule_string + "\n")
 
     cnffile.write(content)
-    cnffile.close
+    cnffile.close()
 
 # python3 cnf_converter.py gringo_graph_reliablity.lp

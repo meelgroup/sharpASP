@@ -36,12 +36,15 @@ jobs:
           
       - name: Sample SharpASP (std) Run
         run: |
-          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c std
+          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c std | tee /tmp/out.txt
+          grep -q "SharpASP Count: 99086" /tmp/out.txt
 
       - name: Sample SharpASP (ganak) Run
         run: |
-          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c ganak
+          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c ganak | tee /tmp/out.txt
+          grep -q "SharpASP Count: 99086" /tmp/out.txt
 
       - name: Sample SharpASP (d4) Run
         run: |
-          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c d4
+          python run-sharpasp.py -i graph_reach.random-graph-20-3-5.zip.lp -c d4 | tee /tmp/out.txt
+          grep -q "SharpASP Count: 99086" /tmp/out.txt

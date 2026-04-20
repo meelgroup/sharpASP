@@ -38,7 +38,7 @@ chmod +x build.sh
 The command should build D4, Ganak, and SharpSAT-TD versions for SharpASP.
 
 ## Benchmark
-The benchmark, experimental log files, binaries, and others are available here: [artifact](https://zenodo.org/records/19607014)
+The benchmark, experimental log files, binaries, and others are available here: [artifact](https://zenodo.org/records/19665132)
 
 
 ## Run sharpASP
